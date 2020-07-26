@@ -5,13 +5,8 @@
 <p color="green"> Check below to get the codes</p>
 
 ### Quiz : 
-```diff
--fds
-+fsd
-! efds
-```
 
-```
+```diff +
 from tkinter import *
 from Question import Question
 root=Tk()
