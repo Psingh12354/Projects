@@ -7,7 +7,7 @@
 ### Quiz : 
 
 ```
-- from tkinter import *
+-from tkinter import *
 - from Question import Question
 - root=Tk()
 - class Question:
