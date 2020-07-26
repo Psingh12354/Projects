@@ -2,12 +2,12 @@
 
 <p align=center><b><i>My Projects</i></b></p>
 
-<p color="green"> Check below to get the codes</p>
+<p> Check below to get the codes</p>
 
 ### Quiz : 
 
-```diff
-+ from tkinter import *
+```
+from tkinter import *
 from Question import Question
 root=Tk()
 class Question:
