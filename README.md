@@ -7,11 +7,11 @@
 ### Quiz : 
 
 ```
--from tkinter import *
-- from Question import Question
-- root=Tk()
-- class Question:
-!    def __init__(self, prompt, answer):
+from tkinter import *
+-from Question import Question
+root=Tk()
+class Question:
+    def __init__(self, prompt, answer):
         self.prompt = prompt
         self.answer = answer
 root.geometry("600x600")
