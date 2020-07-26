@@ -5,7 +5,7 @@
 <p color="green"> Check below to get the codes</p>
 
 ### Quiz : 
-```
+```diff
 - fds
 ```
 
