@@ -5,10 +5,13 @@
 <p color="green"> Check below to get the codes</p>
 
 ### Quiz : 
+```
+- fds
+```
 
 ```
 from tkinter import *
--from Question import Question
+from Question import Question
 root=Tk()
 class Question:
     def __init__(self, prompt, answer):
