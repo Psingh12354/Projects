@@ -11,6 +11,12 @@ def delete3():
 def delete4():
     screen5.destroy()
 
+def closeAll():
+    global screen5
+    screen5 = Toplevel(screen)
+    screen.destroy()
+
+    screen6.destroy()
 
 with open('./data.json', encoding="utf8") as f:
     data = json.load(f)
@@ -41,8 +47,6 @@ def gen():
             continue
         else:
             indexes.append(x)
-
-
 def showresult(score):
     lblQuestion.destroy()
     r1.destroy()
@@ -60,20 +64,23 @@ def showresult(score):
         font=("Consolas", 20),
         background="#ffffff",
     )
-    Label(screen6,bg="black",width=250,height=5).place(x=0,y=0)
+    Label(screen6,bg="gold",width=250,height=5).place(x=0,y=0)
     Label(screen6,bg="snow",width=10,height=250).pack(side=LEFT)
     Label(screen6,bg="snow",width=10,height=250).pack(side=RIGHT)
-    Label(screen6,bg="black",width=250,height=5).pack(side=BOTTOM)
+    Label(screen6,bg="gold",width=250,height=5).pack(side=BOTTOM)
     labelresulttext.pack()
     if score >= 20:
         labelresulttext.configure(text="You Are Excellent !!",bg=None,fg="red",font=('arial', 30, 'bold'))
         Label(screen6,text=("Your score : "+str(score)),fg="red",bg=None,font=('arial', 40, 'bold'),justify=CENTER).pack()
+        Button(screen6, text="Submit", height="2", width="25", bg="white",borderwidth=15,relief=SUNKEN, fg="black", padx=5, pady=5, font=('arial', 15, 'bold'), command=closeAll).pack(side=BOTTOM)
     elif (score >= 10 and score < 20):
         labelresulttext.configure(text="You Can Be Better !!",bg=None,fg="red",font=('arial', 30, 'bold'))
         Label(screen6,text=("Your score : "+str(score)),fg="red",bg=None,font=('arial', 40, 'bold'),justify=CENTER).pack()
+        Button(screen6, text="Submit", height="2", width="25", bg="white",borderwidth=15,relief=SUNKEN, fg="black", padx=5, pady=5, font=('arial', 15, 'bold'), command=closeAll).pack(side=BOTTOM)
     else:
         labelresulttext.configure(text="You Should Work Hard !!",bg=None,fg="red",font=('arial', 30, 'bold'))
-        Label(screen6,text=("Your score : "+str(score)),fg="red",bg=None,font=('arial', 40, 'bold'),justify=CENTER).pack()
+        Label(screen6,text=("Your score : "+str(score)),fg="red",bg=None,font=('arial', 40, 'bold'),justify=CENTER,).pack()
+        Button(screen6, text="Submit", height="2", width="25", bg="white",borderwidth=15,relief=SUNKEN, fg="black", padx=5, pady=5, font=('arial', 15, 'bold'),  command=closeAll).pack(side=BOTTOM)
 
 def calc():
     global indexes, user_answer, answers,score
@@ -88,7 +95,6 @@ def calc():
 
 
 ques = 1
-
 
 def selected():
     global radiovar, user_answer
@@ -190,27 +196,26 @@ def login_sucess():
     screen3.title("Quiz Start")
     screen3.geometry("1200x800")
     screen3.iconbitmap("img.ico")
+    def button_hover(e):
+        btnStart["bg"] = "orange"
+    def button_hover_leave(e):
+        btnStart["bg"] ="snow"
     lblInstruction = Label(
         screen3,
         text="Read The Rules And\nClick Start Once You Are ready",
-        background="#ffffff",
-        font=("Consolas", 14),
+        background="white",
+        fg="black",
+        font=("Consolas", 18),
         justify="center",
     )
     lblInstruction.pack(pady=(10, 100))
-    btnStart = Button(screen3, text="Start Quiz", width=24, height=1, bg="gray", borderwidth=15, relief=SUNKEN,
-                      fg="#FACA2F", padx=5, pady=5, font=('arial', 10, 'bold'), command=startIspressed)
-    btnStart.place(x=650,y=400)
-    Label(screen3,text="Are you ready for Quiz",bg=None,fg="#FACA2F",font=('arial', 20, 'bold')).place(x=615,y=350)
-    lblRules = Label(
-        screen3,
-        text="This quiz contains 10 questions\nYou will get 20 seconds to solve a question\nOnce you select a radio button that will be a final choice\nhence think before you select",
-        width=155,
-        font=("Times", 14),
-        background="#000000",
-        foreground="#FACA2F",
-    )
-    lblRules.pack(side=BOTTOM)
+    btnStart = Button(screen3, text="Start Quiz", width=24, height=1, bg="snow", borderwidth=15, relief=SUNKEN,
+                      fg="black", padx=5, pady=5, font=('arial', 10, 'bold'), command=startIspressed)
+    btnStart.pack(side=BOTTOM)
+    btnStart.bind("<Enter>",button_hover)
+    btnStart.bind("<Leave>",button_hover_leave)
+    Label(screen3,text="Click if ready",bg=None,fg="gold",font=('arial', 20, 'bold')).pack(side=BOTTOM)
+    Label(screen3,text="1.  All Questions are compulsary.\n\n2.  Each question contain 5 points.\n\n3.  No negative marking.\n\n4.  In case if you find merge in any other activity than strict action will be taken against you.\n\n5.  One attempt for each question.\n\n6.  No further rectification is done.\n\n7.  Once u move to next question previous answer can not be canged only one attempt for each question.\n\n",width=155,font=("Times", 16,"bold"),background="white",foreground="black").pack(side=LEFT)
 
 
 def password_not_recognised():
@@ -339,8 +344,8 @@ def login():
         my_button1["bg"] = "black"
     font2=('open sans',10,'bold')
     Label(screen2,bg="black",width=250,height=5).place(x=0,y=0)
-    Label(screen2,bg="snow4",width=10,height=250).pack(side=LEFT)
-    Label(screen2,bg="snow4",width=10,height=250).pack(side=RIGHT)
+    Label(screen2,bg="snow",width=10,height=250).pack(side=LEFT)
+    Label(screen2,bg="snow",width=10,height=250).pack(side=RIGHT)
     Label(screen2,bg="black",width=250,height=5).pack(side=BOTTOM)
     Label(screen2, text="Email : ",borderwidth=15,width=9,relief=SUNKEN,font=('arial', 20, 'bold')).place(x=500,y=200)
     email_entry1 = Entry(screen2, width=50, bd=5, insertwidth=4,font=font2, bg="snow",borderwidth=15,relief=SUNKEN,justify="center", textvariable=email_verify)
